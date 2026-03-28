@@ -96,9 +96,9 @@ export default function Home() {
 <section className="hero">
   <div className="hero-top">
     <div>
-      <h1 className="hero-title">Tài khoản netflix miễn phí</h1>
+      <h1 className="hero-title">Tài khoản Netflix miễn phí</h1>
       <p className="hero-desc">
-        Chỉ cần tải sẵn app netflix và nhấn nút <strong>Mở link</strong>, trang web sẽ tụe động mở app và đăng nhập tài khoản sẵn có :3
+        Chỉ cần tải sẵn app Netflix và nhấn nút <strong>Mở link</strong>, trang web sẽ tụe động mở app và đăng nhập tài khoản sẵn có :3
       </p>
 
       <div className="important-note">
@@ -185,7 +185,7 @@ export default function Home() {
         </div>
       )}
 
-      <div className="footer">Cộng đồng chia sẻ • Giao diện tự động cập nhật</div>
+      <div className="footer">Made by Luonghiii • From with love</div>
     </div>
   );
 }
