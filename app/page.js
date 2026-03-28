@@ -96,12 +96,11 @@ export default function Home() {
 <section className="hero">
   <div className="hero-top">
     <div>
-      <h1 className="hero-title">Khu chia sẻ cộng đồng</h1>
+      <h1 className="hero-title">Tài khoản netflix miễn phí</h1>
       <p className="hero-desc">
-        Không gian cập nhật nhanh các mục đang khả dụng. Danh sách sẽ tự làm mới liên tục để mọi người theo dõi thuận tiện hơn.
+        Chỉ cần tải sẵn app netflix và nhấn nút <strong>Mở link</strong>, trang web sẽ tụe động mở app và đăng nhập tài khoản sẵn có :3
       </p>
-      
-      {/* --- ĐOẠN TEXT MỚI CỦA CẬU Ở ĐÂY --- */}
+
       <div className="important-note">
         <p>⚠️ <strong>Lưu ý quan trọng:</strong></p>
         <ul>
@@ -110,7 +109,7 @@ export default function Home() {
           <li>Sử dụng thông tin có sẵn, không tự ý thay đổi.</li>
         </ul>
       </div>
-      {/* ---------------------------------- */}
+
       
     </div>
     <div className="pill">● Đang cập nhật tự động</div>
@@ -150,7 +149,7 @@ export default function Home() {
       {!loading && !error && activeItems.length === 0 && (
         <div className="status-box empty-box" style={{ lineHeight: '1.6' }}>
           <strong>Hiện chưa có mục nào khả dụng.</strong><br/>
-          Nếu ko thấy mục chia sẻ nào thì hãy đợi vài giây để web tải xong hoặc đợi đến lúc web có link Netflix mới nha! C
+          Nếu ko thấy mục chia sẻ nào thì hãy đợi vài giây để web tải xong hoặc đợi đến lúc web có link Netflix mới nha!
         </div>
       )}
 
