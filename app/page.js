@@ -93,16 +93,30 @@ export default function Home() {
 
   return (
     <div className="container">
-      <section className="hero">
-        <div className="hero-top">
-          <div>
-            <h1 className="hero-title">Khu chia sẻ cộng đồng</h1>
-            <p className="hero-desc">
-              Không gian cập nhật nhanh các mục đang khả dụng. Danh sách sẽ tự làm mới liên tục để mọi người theo dõi thuận tiện hơn.
-            </p>
-          </div>
-          <div className="pill">● Đang cập nhật tự động</div>
-        </div>
+<section className="hero">
+  <div className="hero-top">
+    <div>
+      <h1 className="hero-title">Khu chia sẻ cộng đồng</h1>
+      <p className="hero-desc">
+        Không gian cập nhật nhanh các mục đang khả dụng. Danh sách sẽ tự làm mới liên tục để mọi người theo dõi thuận tiện hơn.
+      </p>
+      
+      {/* --- ĐOẠN TEXT MỚI CỦA CẬU Ở ĐÂY --- */}
+      <div className="important-note">
+        <p>⚠️ <strong>Lưu ý quan trọng:</strong></p>
+        <ul>
+          <li>Chỉ hỗ trợ đăng nhập trên <strong>App điện thoại</strong>.</li>
+          <li>Khi vào được Netflix, vui lòng <strong>KHÔNG</strong> nhấn đăng xuất hoặc đổi tên Profile.</li>
+          <li>Sử dụng thông tin có sẵn, không tự ý thay đổi.</li>
+        </ul>
+      </div>
+      {/* ---------------------------------- */}
+      
+    </div>
+    <div className="pill">● Đang cập nhật tự động</div>
+  </div>
+
+
         <div className="stats">
           <div className="stat">
             <div className="stat-label">Mục đang mở</div>
