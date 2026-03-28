@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import "./globals.css"; // Nhúng file CSS
-
+ 
 export default function Home() {
   const [currentData, setCurrentData] = useState([]);
   const [now, setNow] = useState(new Date());
