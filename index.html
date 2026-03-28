@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trung tâm chia sẻ</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #0a0a0f;
+      --card: #13131b;
+      --card-2: #1a1a24;
+      --line: rgba(255,255,255,0.08);
+      --text: #f5f7fb;
+      --muted: #9aa3b2;
+      --accent: #ffd54f;
+      --accent-2: #ffb300;
+      --ok: #7ee787;
+      --danger: #ff8f8f;
+      --shadow: 0 18px 50px rgba(0,0,0,0.35);
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255, 213, 79, 0.08), transparent 30%),
+        radial-gradient(circle at top right, rgba(126, 231, 135, 0.06), transparent 20%),
+        var(--bg);
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(1100px, calc(100% - 24px));
+      margin: 0 auto;
+      padding: 24px 0 40px;
+    }
+
+    .hero {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px 22px;
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: -30px;
+      right: -20px;
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, rgba(255, 213, 79, 0.16), transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-desc {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+      max-width: 720px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255, 213, 79, 0.18);
+      background: rgba(255, 213, 79, 0.08);
+      color: #ffe082;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin: 18px 0 0;
+    }
+
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .stat-value {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin: 20px 0 14px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+    .refresh-note {
+      color: var(--muted);
+      font-size: 13px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.02);
+      border-radius: 999px;
+      padding: 10px 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, var(--card), var(--card-2));
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(255,255,255,0.04), transparent 35%);
+      pointer-events: none;
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .badge {
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      border: 1px solid rgba(126, 231, 135, 0.16);
+      background: rgba(126, 231, 135, 0.08);
+      color: #b7f5be;
+      white-space: nowrap;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .meta-item {
+      font-size: 13px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      padding: 8px 12px;
+      border-radius: 12px;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .open-btn {
+      appearance: none;
+      border: 0;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #1a1605;
+      font-weight: 700;
+      padding: 12px 16px;
+      border-radius: 14px;
+      min-width: 135px;
+      transition: transform 0.18s ease, opacity 0.18s ease;
+    }
+
+    .open-btn:hover {
+      transform: translateY(-1px);
+      opacity: 0.95;
+    }
+
+    .status-box,
+    .empty-box,
+    .error-box {
+      padding: 28px 18px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .error-box {
+      color: var(--danger);
+    }
+
+    .footer {
+      margin-top: 26px;
+      text-align: center;
+      color: #727b88;
+      font-size: 12px;
+    }
+
+    @media (max-width: 860px) {
+      .stats,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-title {
+        font-size: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <div class="hero-top">
+        <div>
+          <h1 class="hero-title">Khu chia sẻ cộng đồng</h1>
+          <p class="hero-desc">
+            Không gian cập nhật nhanh các mục đang khả dụng. Danh sách sẽ tự làm mới liên tục để mọi người theo dõi thuận tiện hơn.
+          </p>
+        </div>
+
+        <div class="pill">● Đang cập nhật tự động</div>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-label">Mục đang mở</div>
+          <div class="stat-value" id="activeCount">0</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-label">Cập nhật gần nhất</div>
+          <div class="stat-value" id="lastUpdated">--:--:--</div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-label">Chu kỳ làm mới</div>
+          <div class="stat-value">30s</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="toolbar">
+      <div>
+        <h2 class="section-title">Danh sách hiện có</h2>
+        <div class="section-sub">Chọn mục phù hợp để mở nhanh.</div>
+      </div>
+
+      <div class="refresh-note">Tự đồng bộ theo thời gian thực</div>
+    </div>
+
+    <div id="statusBox" class="status-box">Đang tải dữ liệu...</div>
+    <div id="listGrid" class="grid" style="display:none;"></div>
+
+    <div class="footer">
+      Cộng đồng chia sẻ • Giao diện tự động cập nhật
+    </div>
+  </div>
+
+  <script>
+    const API_URL = "https://script.google.com/macros/s/AKfycbwzELOCRCVWUd1b7aT6Vt0pdG74BnR397IctlPEeiTzkeEzQ2nGE4KhDjuW1E08gWy3/exec";
+    const REFRESH_MS = 30000;
+
+    const statusBox = document.getElementById("statusBox");
+    const listGrid = document.getElementById("listGrid");
+    const activeCount = document.getElementById("activeCount");
+    const lastUpdated = document.getElementById("lastUpdated");
+
+    let currentData = [];
+
+    function parseDate(value) {
+      const d = new Date(value);
+      return isNaN(d.getTime()) ? null : d;
+    }
+
+    function formatTime(date) {
+      return new Intl.DateTimeFormat("vi-VN", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+      }).format(date);
+    }
+
+    function formatRemain(ms) {
+      if (ms <= 0) return "Đã hết hạn";
+
+      const total = Math.floor(ms / 1000);
+      const h = Math.floor(total / 3600);
+      const m = Math.floor((total % 3600) / 60);
+      const s = total % 60;
+
+      if (h > 0) return `${h}h ${m}m ${s}s`;
+      if (m > 0) return `${m}m ${s}s`;
+      return `${s}s`;
+    }
+
+    function getActiveItems(data) {
+      const now = new Date();
+      return data.filter(item => {
+        const exp = parseDate(item.expires_at);
+        return exp && exp > now;
+      });
+    }
+
+    function render() {
+      const now = new Date();
+      const activeItems = getActiveItems(currentData);
+
+      activeCount.textContent = activeItems.length;
+      lastUpdated.textContent = formatTime(now);
+
+      if (!activeItems.length) {
+        listGrid.style.display = "none";
+        statusBox.style.display = "block";
+        statusBox.className = "empty-box";
+        statusBox.textContent = "Hiện chưa có mục nào khả dụng.";
+        return;
+      }
+
+      statusBox.style.display = "none";
+      listGrid.style.display = "grid";
+
+      listGrid.innerHTML = activeItems.map((item, index) => {
+        const exp = parseDate(item.expires_at);
+        const remain = exp ? exp - now : 0;
+        const btnIndex = index + 1;
+
+        return `
+          <article class="card">
+            <div class="card-top">
+              <h3 class="card-title">Mục chia sẻ #${btnIndex}</h3>
+              <span class="badge">Đang hoạt động</span>
+            </div>
+
+            <div class="meta">
+              <div class="meta-item">Còn lại: ${formatRemain(remain)}</div>
+              <div class="meta-item">Trạng thái: Sẵn sàng mở</div>
+            </div>
+
+            <div class="btn-row">
+              <a class="open-btn" href="${item.url}" target="_blank" rel="noopener noreferrer">
+                Mở link ${btnIndex}
+              </a>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    async function loadData() {
+      try {
+        const res = await fetch(API_URL + "?t=" + Date.now());
+        if (!res.ok) {
+          throw new Error("HTTP " + res.status);
+        }
+
+        const data = await res.json();
+        if (!Array.isArray(data)) {
+          throw new Error("Dữ liệu không hợp lệ");
+        }
+
+        currentData = data;
+        render();
+      } catch (err) {
+        listGrid.style.display = "none";
+        statusBox.style.display = "block";
+        statusBox.className = "error-box";
+        statusBox.textContent = "Không thể tải dữ liệu lúc này.";
+        console.error(err);
+      }
+    }
+
+    loadData();
+    setInterval(loadData, REFRESH_MS);
+    setInterval(render, 1000);
+  </script>
+</body>
+</html>
