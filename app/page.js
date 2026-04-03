@@ -104,7 +104,7 @@ export default function Home() {
       <div className="important-note">
         <p>⚠️ <strong>Lưu ý quan trọng:</strong></p>
         <ul>
-          <li>Chỉ hỗ trợ đăng nhập trên <strong>App điện thoại</strong>.</li>
+          <li>Hỗ trợ đăng nhập trên <strong>App điện thoại</strong> và <strong>Máy tính</strong>.</li>
           <li>Khi vào được Netflix, vui lòng <strong>KHÔNG</strong> nhấn đăng xuất hoặc đổi tên Profile.</li>
           <li>Sử dụng thông tin có sẵn, không tự ý thay đổi.</li>
         </ul>
