@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 // Link AppScript bí mật của cậu được giấu kỹ ở đây, F12 không bao giờ thấy được
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwzELOCRCVWUd1b7aT6Vt0pdG74BnR397IctlPEeiTzkeEzQ2nGE4KhDjuW1E08gWy3/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw5Ir0ppi0_ihD4HNOA8McKbLr439gNheGSR7Fy6iBpnWIGLPrXAOyry5iu8jSXpRlm/exec";
 
 export async function GET() {
   try {
